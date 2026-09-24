@@ -1,0 +1,57 @@
+### TASK 1 — GET order (happy path)
+GET http://localhost:5000/api/orders/2
+Accept: application/json
+
+###
+
+### TASK 1 — GET order not found (404)
+GET http://localhost:5000/api/orders/999
+Accept: application/json
+
+###
+
+### TASK 2 — Fulfill order (happy path)
+PUT http://localhost:5000/api/orders/2/fulfill
+Content-Type: application/json
+
+{
+  "statusName": "Completed"
+}
+
+###
+
+### TASK 2 — Order not found (404)
+PUT http://localhost:5000/api/orders/999/fulfill
+Content-Type: application/json
+
+{
+  "statusName": "Completed"
+}
+
+###
+
+### TASK 2 — Status not found (404)
+PUT http://localhost:5000/api/orders/1/fulfill
+Content-Type: application/json
+
+{
+  "statusName": "DoesNotExist"
+}
+
+###
+
+### TASK 2 — Already completed (409)
+PUT http://localhost:5000/api/orders/2/fulfill
+Content-Type: application/json
+
+{
+  "statusName": "Completed"
+}
+
+###
+
+### TASK 2 — Missing body / bad request (400)
+PUT http://localhost:5000/api/orders/1/fulfill
+Content-Type: application/json
+
+{}

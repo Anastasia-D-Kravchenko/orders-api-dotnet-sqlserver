@@ -1,0 +1,7 @@
+*.user
+.DS_Store
+.env
+.idea/
+.vs/
+bin/
+obj/
